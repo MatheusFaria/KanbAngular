@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html ng-app="kanbangular">
+<html ng-app="kanbAngular">
   <head>
-    <title>KanbAngular</title>
     <script type="text/javascript" src="angularjs/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <title>KanbAngular</title>
   </head>
 
-  <body>
+  <body ng-controller="StoryController as story">
     <h1>KanbAngular</h1>
     <table width="100%" border="1px" align="center">
       <tr>
@@ -21,35 +22,17 @@
         </td>
         <td>
           <ul>
-            <li>
-              <table border="1px" width="90%" align="center">
-                <tr><td>US01-T03</td></tr>
-                <tr><td>Title</td></tr>
-              </table>
-              <br>
-            </li>
+            <task></task>
           </ul>
         </td>
         <td>
           <ul>
-            <li>
-              <table border="1px" width="90%" align="center">
-                <tr><td>US01-T02</td></tr>
-                <tr><td>Title</td></tr>
-              </table>
-              <br>
-            </li>
+            <task></task>
           </ul>
         </td>
         <td>
           <ul>
-            <li>
-              <table border="1px" width="90%" align="center">
-                <tr><td>US01-T01</td></tr>
-                <tr><td>Title</td></tr>
-              </table>
-              <br>
-            </li>
+            <task></task>
           </ul>
         </td>
 
