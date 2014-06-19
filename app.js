@@ -1,6 +1,14 @@
 (function() {
   var app = angular.module('kanbAngular', []);
 
+  app.controller("KanbanController", function(){
+    this.colunm = 0;
+
+    this.setColunm = function(number){
+      this.colunm = number;
+    };
+  });
+
   app.controller("StoryController", function() {
     this.stories = stories;
     this.story = {};
@@ -15,10 +23,12 @@
 
     app.controller("TaskController", function() {
       this.task = {};
+      this.current_story = 0;
 
-      this.addTasks = function(story) {
-        story.tasks.push(this.task);
+      this.addTasks = function() {
+        stories[this.current_story - 1].tasks.push(this.task);
         this.task = {};
+        this.current_story = 0;
       };
   });
 
@@ -82,14 +92,30 @@
       as: "a user",
       iWant: "to do my homework",
       to: "pass in DAS",
-      tasks: []
+      tasks: [
+      {
+          id: 1,
+          description: "First",
+          status: 0
+      },
+      {
+          id: 2,
+          description: "Second",
+          status: 1
+      }]
     },
     {
       id: 2,
       as: "a user",
       iWant: "to do my homework",
       to: "pass in DAS",
-      tasks: []
+      tasks: [
+      {
+          id: 1,
+          description: "First From Second Story",
+          status: 2
+
+      }]
     }];
 
 })();

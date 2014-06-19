@@ -7,33 +7,30 @@
     <title>KanbAngular</title>
   </head>
 
-  <body ng-controller="StoryController as storyCtrl" >
+  <body ng-controller="StoryController as storyCtrl">
     <h1>KanbAngular</h1>
-    <table width="100%" border="1px" align="center" ng-controller="TaskController as taskCtrl">
+    <table width="100%" border="1px" align="center" ng-controller="KanbanController as kanban">
       <tr>
         <td width="35%" align="center">Story</td>
         <td align="center">To Do</td>
         <td align="center">Doing</td>
         <td align="center">Done</td>
       </tr>
-      <tr height="200px" ng-repeat="story in storyCtrl.stories">
+      <tr height="200px" ng-repeat="story in storyCtrl.stories" >
         <td>
             <story></story>
         </td>
         <td>
-          <ul>
+            {{kanban.setColunm(0)}}
             <task></task>
-          </ul>
         </td>
         <td>
-          <ul>
+            {{kanban.setColunm(1)}}
             <task></task>
-          </ul>
         </td>
         <td>
-          <ul>
+            {{kanban.setColunm(2)}}
             <task></task>
-          </ul>
         </td>
 
       </tr>
