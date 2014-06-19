@@ -9,6 +9,7 @@
     this.addStory = function() {
       this.stories.push(this.story);
       this.story = {};
+      this.story.id = this.stories.length+1;
     };
   });
 
@@ -48,7 +49,7 @@
             templateUrl: "form-tabs.html",
               
             controller: function() {
-              this.tab = 1;
+              this.tab = 2;
               this.isSet = function(checkTab) {
                 return this.tab === checkTab;
               };
