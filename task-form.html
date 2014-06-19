@@ -1,17 +1,16 @@
 <form name="addTaskForm" ng-controller="TaskController as taskCtrl" ng-submit="taskCtrl.addTask()">
   <blockquote >
-    <strong>US{{storyCtrl.story.id}}-T{{taskCtrl.task.id}}</strong><br></br>
+    <strong>US{{taskCtrl.current_story.id}}-T{{taskCtrl.task.id}}</strong><br></br>
     <strong>Description:</strong> {{taskCtrl.task.description}}<br></br>
   </blockquote>
 
 	<fieldset class="form-group">
-    	<select ng-model="taskCtrl.current_story" class="form-control" ng-options="story.id for story in storyCtrl.stories"  title="Story" required>
-      		<option value>Select a Story</option>
+    	<select ng-model="taskCtrl.current_story" class="form-control" ng-options="story.id for story in storyCtrl.stories"  title="Story">
     	</select>
  	</fieldset>
 
   <fieldset class="form-group">
-    <textarea ng-model="taskCtrl.task.description" type="text" class="form-control" placeholder="Description..." title="Description" required></textarea>
+    <textarea ng-model="taskCtrl.task.description" type="text" class="form-control" placeholder="Description..." title="Description"></textarea>
   </fieldset>
   <fieldset class="form-group">
     <input type="submit" class="btn btn-primary pull-right" value="Submit Task"/>

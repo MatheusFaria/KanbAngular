@@ -15,12 +15,18 @@
 
   app.controller("TaskController", function() {
       this.task = {};
-      this.current_story = 0;
+      this.current_story = stories[0];
+      this.task.status = 0;
+      this.task.id = this.current_story.tasks.length + 1;
 
-      this.addTasks = function() {
-        stories[this.current_story - 1].tasks.push(this.task);
+      this.addTask = function() {
+        this.task.id = this.current_story.tasks.length + 1;
+        this.current_story.tasks.push(this.task);
+
         this.task = {};
-        this.current_story = 0;
+        this.current_story = stories[0];
+        this.task.id = this.current_story.tasks.length + 1;
+        this.task.status = 0;
       };
   });
 
