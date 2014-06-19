@@ -9,6 +9,17 @@
     };
   });
 
+    app.controller("TaskController", function() {
+      this.task = {};
+
+    this.addTasks = function(story) {
+      story.tasks.push(this.task);
+
+      this.task = {};
+    };
+
+  });
+
   app.directive("story", function(){
     return {
             restrict: 'E',
