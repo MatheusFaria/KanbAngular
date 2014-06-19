@@ -1,14 +1,6 @@
 (function() {
   var app = angular.module('kanbAngular', []);
 
-  app.controller("KanbanController", function(){
-    this.colunm = 0;
-
-    this.setColunm = function(number){
-      this.colunm = number;
-    };
-  });
-
   app.controller("StoryController", function() {
     this.stories = stories;
     this.story = {};
@@ -21,7 +13,7 @@
     };
   });
 
-    app.controller("TaskController", function() {
+  app.controller("TaskController", function() {
       this.task = {};
       this.current_story = 0;
 
@@ -46,10 +38,24 @@
     };
   });
 
-  app.directive("task", function(){
+  app.directive("taskTodo", function(){
     return {
             restrict: 'E',
-            templateUrl: "task.html"
+            templateUrl: "task-todo.html"
+    };
+  });
+
+  app.directive("taskDoing", function(){
+    return {
+            restrict: 'E',
+            templateUrl: "task-doing.html"
+    };
+  });
+
+  app.directive("taskDone", function(){
+    return {
+            restrict: 'E',
+            templateUrl: "task-done.html"
     };
   });
 

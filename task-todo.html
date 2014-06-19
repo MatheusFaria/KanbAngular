@@ -1,0 +1,11 @@
+<ul>
+    <li ng-repeat="task in story.tasks" ng-show="task.status == 0">
+	  <table border="1px" width="90%" align="center">
+
+	    <tr><td>US{{story.id}}-T{{task.id}}</td></tr>
+	    <tr><td>{{task.description}}</td></tr>
+	  </table>
+	  <br></br>
+    </li>
+</ul>
+

@@ -9,7 +9,7 @@
 
   <body ng-controller="StoryController as storyCtrl">
     <h1>KanbAngular</h1>
-    <table width="100%" border="1px" align="center" ng-controller="KanbanController as kanban">
+    <table width="100%" border="1px" align="center">
       <tr>
         <td width="35%" align="center">Story</td>
         <td align="center">To Do</td>
@@ -21,16 +21,13 @@
             <story></story>
         </td>
         <td>
-            {{kanban.setColunm(0)}}
-            <task></task>
+            <task-todo></task-todo>
         </td>
         <td>
-            {{kanban.setColunm(1)}}
-            <task></task>
+            <task-doing></task-doing>
         </td>
         <td>
-            {{kanban.setColunm(2)}}
-            <task></task>
+            <task-done></task-done>
         </td>
 
       </tr>
