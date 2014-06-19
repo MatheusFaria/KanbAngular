@@ -3,21 +3,22 @@
 
   app.controller("StoryController", function() {
     this.stories = stories;
+    this.story = {};
+    this.story.id = this.stories.length+1;
 
     this.addStory = function() {
-
+      this.stories.push(this.story);
+      this.story = {};
     };
   });
 
     app.controller("TaskController", function() {
       this.task = {};
 
-    this.addTasks = function(story) {
-      story.tasks.push(this.task);
-
-      this.task = {};
-    };
-
+      this.addTasks = function(story) {
+        story.tasks.push(this.task);
+        this.task = {};
+      };
   });
 
   app.directive("story", function(){
@@ -47,7 +48,7 @@
             templateUrl: "form-tabs.html",
               
             controller: function() {
-              this.tab = 3;
+              this.tab = 1;
               this.isSet = function(checkTab) {
                 return this.tab === checkTab;
               };
