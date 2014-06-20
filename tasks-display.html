@@ -1,6 +1,7 @@
 <ul>
-    <li ng-repeat="task in story.tasks" ng-show="kanban.colunm === task.status">
+    <li ng-repeat="task in tasksDisplayCtrl.tasks" ng-show="tasksDisplayCtrl.isInTheColunm(task)">
 	  <table border="1px" width="90%" align="center">
+
 	    <tr><td>US{{story.id}}-T{{task.id}}</td></tr>
 	    <tr><td>{{task.description}}</td></tr>
 	  </table>

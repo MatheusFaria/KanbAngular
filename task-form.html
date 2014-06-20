@@ -1,6 +1,6 @@
 <form name="addTaskForm" ng-controller="TaskController as taskCtrl" ng-submit="taskCtrl.addTask()">
   <blockquote >
-    <strong>US{{taskCtrl.current_story.id}}-T{{taskCtrl.task.id}}</strong><br></br>
+    <strong>US{{taskCtrl.current_story.id}}-T{{taskCtrl.getTaskId()}}</strong><br></br>
     <strong>Description:</strong> {{taskCtrl.task.description}}<br></br>
   </blockquote>
 

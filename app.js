@@ -2,38 +2,54 @@
   var app = angular.module('kanbAngular', []);
 
   app.controller("StoryController", function() {
-    this.stories = stories;
-    this.story = {};
-    this.story.id = this.stories.length+1;
-
     this.addStory = function() {
       this.stories.push(this.story);
-      this.story = {};
-      this.story.id = this.stories.length+1;
+      clearStory();
     };
+
+    var clearStory = function() {
+      ctrl.story = {};
+      ctrl.story.tasks = [];
+      if(ctrl.stories.length !== 0) 
+          ctrl.story.id = ctrl.stories[ctrl.stories.length - 1].id + 1;
+      else
+          ctrl.story.id = 1;
+    };
+
+    this.stories = stories;
+    var ctrl = this;
+    clearStory();
   });
 
   app.controller("TaskController", function() {
-      this.task = {};
-      this.current_story = stories[0];
-      this.task.status = 0;
-      this.task.id = this.current_story.tasks.length + 1;
-
       this.addTask = function() {
-        this.task.id = this.current_story.tasks.length + 1;
+        this.task.id = this.getTaskId();
         this.current_story.tasks.push(this.task);
 
-        this.task = {};
-        this.current_story = stories[0];
-        this.task.id = this.current_story.tasks.length + 1;
-        this.task.status = 0;
+        clearTask();
       };
+
+      this.getTaskId = function(){
+        if(this.current_story.tasks.length !== 0)
+            return this.current_story.tasks[this.current_story.tasks.length - 1].id + 1;
+        return 1;
+      };
+
+      var clearTask = function() {
+        ctrl.task = {};
+        ctrl.current_story = stories[0];
+        ctrl.task.status = 0;
+        ctrl.task.id = ctrl.getTaskId();
+      };
+
+      var ctrl = this;
+      clearTask();
   });
 
-  app.directive("story", function(){
+  app.directive("storyDisplay", function(){
     return {
             restrict: 'E',
-            templateUrl: "story.html"
+            templateUrl: "story-display.html"
     };
   });
 
@@ -44,24 +60,23 @@
     };
   });
 
-  app.directive("taskTodo", function(){
+  app.directive("tasksDisplay", function(){
     return {
             restrict: 'E',
-            templateUrl: "task-todo.html"
-    };
-  });
+            templateUrl: "tasks-display.html",
+            controller: ['$scope', function($scope) {
+                this.colunm = $scope.colunm;
+                this.tasks = $scope.tasks;
 
-  app.directive("taskDoing", function(){
-    return {
-            restrict: 'E',
-            templateUrl: "task-doing.html"
-    };
-  });
-
-  app.directive("taskDone", function(){
-    return {
-            restrict: 'E',
-            templateUrl: "task-done.html"
+                this.isInTheColunm = function(task) {
+                  return task.status === this.colunm;
+                };
+            }],
+            controllerAs: "tasksDisplayCtrl",
+            scope: {
+              colunm: "=",
+              tasks: "=",
+            },
     };
   });
 

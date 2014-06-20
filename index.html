@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="kanbAngular">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
   <head>
     <script type="text/javascript" src="angularjs/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
@@ -16,18 +17,18 @@
         <td align="center">Doing</td>
         <td align="center">Done</td>
       </tr>
-      <tr height="200px" ng-repeat="story in storyCtrl.stories" >
+      <tr height="200px" ng-repeat="story in storyCtrl.stories">
         <td>
-            <story></story>
+            <story-display></story-display>
         </td>
         <td>
-            <task-todo></task-todo>
+            <tasks-display colunm="0" tasks=story.tasks></tasks-display>
         </td>
         <td>
-            <task-doing></task-doing>
+            <tasks-display colunm="1" tasks=story.tasks></tasks-display>
         </td>
         <td>
-            <task-done></task-done>
+            <tasks-display colunm="2" tasks=story.tasks></tasks-display>
         </td>
 
       </tr>
