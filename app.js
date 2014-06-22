@@ -11,14 +11,18 @@
       this.stories.splice(this.stories.indexOf(story),1);
     };
 
-    this.editStory = function() {
-      this.stories.pop(this.story);
-      clearStory();
+    this.editStory = function(story) {
+      story.edit = true;
+    };
+
+    this.saveStory = function(story) {
+      story.edit = false;
     };
 
     var clearStory = function() {
       ctrl.story = {};
       ctrl.story.tasks = [];
+      ctrl.edit = false;
       if(ctrl.stories.length !== 0) 
           ctrl.story.id = ctrl.stories[ctrl.stories.length - 1].id + 1;
       else
@@ -144,6 +148,7 @@
       as: "a user",
       iWant: "to do my homework",
       to: "pass in DAS",
+      edit: false,
       tasks: [
       {
           id: 1,
@@ -161,6 +166,7 @@
       as: "a user",
       iWant: "to do my homework",
       to: "pass in DAS",
+      edit: false,
       tasks: [
       {
           id: 1,

@@ -1,9 +1,32 @@
 <table border="1px" width="90%" height="90%" align="center" >
-  <tr><td>US {{story.id}}</td></tr>
-  <tr><td>As {{story.as}}</td></tr>
-  <tr><td>I want {{story.iWant}}</td></tr>
-  <tr><td>To {{story.to}}</td></tr>
+  <tr>
+  	<td>
+  		US {{story.id}}
+  	</td>
+  </tr>
+  <tr>
+  	<td ng-hide="story.edit">
+  		As {{story.as}}
+  	</td>
+  	<td ng-show="story.edit">
+  		<input ng-model="storyCtrl.story.as" type="text" class="form-control" placeholder="As ... " title="As" required/>
+  	</td>
+  </tr>
+  <tr>
+  	<td>
+  		I want {{story.iWant}}
+  	</td>
+  </tr>
+  <tr>
+  	<td>
+  		To {{story.to}}
+  	</td>
+  </tr>
   <tr align="right">
-	    	<td><button class="btn glyphicon glyphicon-pencil" ng-click="tasksDisplayCtrl.moveToRight(task)"><button class="btn glyphicon glyphicon-trash" ng-click="storyCtrl.removeStory(story)"></td>
+	    <td>
+	    	<button class="btn glyphicon glyphicon-pencil" ng-hide="story.edit" ng-click="storyCtrl.editStory(story)"></button>
+	    	<button class="btn glyphicon glyphicon-floppy-disk" ng-show="story.edit" ng-click="storyCtrl.saveStory(story)"></button>
+	    	<button class="btn glyphicon glyphicon-trash" ng-click="storyCtrl.removeStory(story)"></button>	
+	    </td>
   </tr>
 </table>

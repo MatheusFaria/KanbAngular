@@ -3,16 +3,26 @@
 	  <table border="1px" width="90%" align="center">
 
 	    <tr align="center">
-	    	<td> <button class="btn glyphicon glyphicon-circle-arrow-left" ng-click="tasksDisplayCtrl.moveToLeft(task)"> </button>
+	    	<td> 
+	    		<button class="btn glyphicon glyphicon-circle-arrow-left" ng-click="tasksDisplayCtrl.moveToLeft(task)"> </button>
             </td>
-	    	<td>US{{story.id}}-T{{task.id}}</td>
-	    	<td> <button class="btn glyphicon glyphicon-circle-arrow-right" ng-click="tasksDisplayCtrl.moveToRight(task)"> </button> </td>
+	    	<td>
+	    		US{{story.id}}-T{{task.id}}
+	    	</td>
+	    	<td> 
+	    		<button class="btn glyphicon glyphicon-circle-arrow-right" ng-click="tasksDisplayCtrl.moveToRight(task)"> </button> 
+	    	</td>
 	    </tr>
 	    <tr align="center">
-	    	<td colspan="3">{{task.description}}</td>
+	    	<td colspan="3">
+	    		{{task.description}}
+	    	</td>
 	    </tr>
 	    <tr align="right">
-	    	<td colspan="3"><button class="btn glyphicon glyphicon-pencil" ng-click="tasksDisplayCtrl.moveToRight(task)"><button class="btn glyphicon glyphicon-trash" ng-click="tasksDisplayCtrl.removeTask(task)"></td>
+	    	<td colspan="3">
+	    		<button class="btn glyphicon glyphicon-pencil" ng-click="tasksDisplayCtrl.moveToRight(task)"></button>
+	    		<button class="btn glyphicon glyphicon-trash" ng-click="tasksDisplayCtrl.removeTask(task)"></button>
+	    	</td>
 	    </tr>
 	  </table>
 	  <br></br>
