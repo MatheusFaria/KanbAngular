@@ -1,1 +1,5 @@
-<h1> History </h1>
+<ul>
+	<li ng-repeat="report in historyCtrl.history | orderBy:'time':true | limitTo: 10 ">
+		{{report.msg}} - {{report.time | date : 'dd/MM/yyyy HH:mm'}}
+	</li>
+</ul>

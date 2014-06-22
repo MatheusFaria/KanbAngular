@@ -4,10 +4,12 @@
   app.controller("StoryController", function() {
     this.addStory = function() {
       this.stories.push(this.story);
+      addToHistory(createReport("Add US" + this.story.id));
       clearStory();
     };
 
     this.removeStory = function(story) {
+      addToHistory(createReport("Remove US" + story.id));
       this.stories.splice(this.stories.indexOf(story),1);
     };
 
@@ -16,6 +18,7 @@
     };
 
     this.saveStory = function(story) {
+      addToHistory(createReport("Edit US" + story.id));
       story.edit = false;
     };
 
@@ -36,6 +39,7 @@
 
   app.controller("TaskController", function() {
       this.addTask = function() {
+        addToHistory(createReport("Add Task" + this.task.id));
         this.task.id = this.getTaskId();
         this.current_story.tasks.push(this.task);
 
@@ -85,12 +89,22 @@
                 this.moveToRight = function(task) {
                   if(task.status !== 2){
                     task.status++;
+                    if(task.status === 1){
+                      addToHistory(createReport("Doing task " + task.id));
+                    }else{
+                      addToHistory(createReport("Done task " + task.id));
+                    }
                   }
                 };
 
                 this.moveToLeft = function(task) {
                   if(task.status !== 0){
                     task.status--;
+                    if(task.status === 0){
+                      addToHistory(createReport("Task " + task.id + " moved from Doing to To Do"));
+                    }else{
+                      addToHistory(createReport("Task " + task.id + " moved from Done to Doing"));
+                    }
                   }
                 };
 
@@ -99,10 +113,12 @@
                 };
 
                 this.saveTask = function(task) {
+                  addToHistory(createReport("Edit task " + task.id)); 
                   task.edit = false;
                 };
 
                 this.removeTask = function(task) {
+                  addToHistory(createReport("Remove task " + task.id));
                   this.tasks.splice(this.tasks.indexOf(task),1);
                 };
 
