@@ -9,17 +9,23 @@
   		As {{story.as}}
   	</td>
   	<td ng-show="story.edit">
-  		<input ng-model="storyCtrl.story.as" type="text" class="form-control" placeholder="As ... " title="As" required/>
+  		<input ng-model="story.as" type="text" class="form-control" placeholder="As ... " title="As" />
   	</td>
   </tr>
   <tr>
-  	<td>
+  	<td ng-hide="story.edit">
   		I want {{story.iWant}}
   	</td>
+  	<td ng-show="story.edit">
+  		<input ng-model="story.iWant" type="text" class="form-control" placeholder="I want to ... " title="IWant"/>
+  	</td>
   </tr>
   <tr>
-  	<td>
+  	<td ng-hide="story.edit">
   		To {{story.to}}
+  	</td>
+  	<td ng-show="story.edit">
+  		<input ng-model="story.to" type="text" class="form-control" placeholder="To ... " title="To" />
   	</td>
   </tr>
   <tr align="right">

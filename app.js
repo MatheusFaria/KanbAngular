@@ -53,6 +53,7 @@
         ctrl.current_story = stories[0];
         ctrl.task.status = 0;
         ctrl.task.id = ctrl.getTaskId();
+        ctrl.task.edit = false;
       };
 
       var ctrl = this;
@@ -91,6 +92,14 @@
                   if(task.status !== 0){
                     task.status--;
                   }
+                };
+
+                this.editTask = function(task) {
+                  task.edit = true;
+                };
+
+                this.saveTask = function(task) {
+                  task.edit = false;
                 };
 
                 this.removeTask = function(task) {
@@ -139,9 +148,26 @@
   app.directive("history", function(){
     return {
             restrict: 'E',
-            templateUrl: "history.html"
+            templateUrl: "history.html",
+            controller: function(){
+              this.history = history;
+            },
+            controllerAs: "historyCtrl",
     };
   });
+
+  var history = [];
+
+  var createReport = function(message){
+    return {
+      msg: message, 
+      time: Date.now()
+    };
+  };
+
+  var addToHistory = function(report){
+    history.push(report);
+  };
 
   var stories = [{
       id: 1,
@@ -153,12 +179,14 @@
       {
           id: 1,
           description: "First",
-          status: 0
+          status: 0,
+          edit: false,
       },
       {
           id: 2,
           description: "Second",
-          status: 1
+          status: 1,
+          edit: false,
       }]
     },
     {
@@ -171,7 +199,8 @@
       {
           id: 1,
           description: "First From Second Story",
-          status: 2
+          status: 2,
+          edit: false,
 
       }]
     }];

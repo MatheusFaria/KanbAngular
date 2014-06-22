@@ -14,14 +14,22 @@
 	    	</td>
 	    </tr>
 	    <tr align="center">
-	    	<td colspan="3">
+	    	<td colspan="3" ng-hide="task.edit">
 	    		{{task.description}}
+	    	</td>
+	    	<td colspan="3" ng-show="task.edit">
+	    		<textarea ng-model="task.description" type="text" class="form-control" placeholder="Description..." title="Description">
+	    		</textarea>
 	    	</td>
 	    </tr>
 	    <tr align="right">
 	    	<td colspan="3">
-	    		<button class="btn glyphicon glyphicon-pencil" ng-click="tasksDisplayCtrl.moveToRight(task)"></button>
-	    		<button class="btn glyphicon glyphicon-trash" ng-click="tasksDisplayCtrl.removeTask(task)"></button>
+	    		<button class="btn glyphicon glyphicon-pencil" ng-hide="task.edit" ng-click="tasksDisplayCtrl.editTask(task)">
+	    		</button>
+	    		<button class="btn glyphicon glyphicon-floppy-disk" ng-show="task.edit" ng-click="tasksDisplayCtrl.saveTask(task)">
+	    		</button>
+	    		<button class="btn glyphicon glyphicon-trash" ng-click="tasksDisplayCtrl.removeTask(task)">
+	    		</button>
 	    	</td>
 	    </tr>
 	  </table>
