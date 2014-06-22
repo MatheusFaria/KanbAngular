@@ -68,6 +68,23 @@
                 this.colunm = $scope.colunm;
                 this.tasks = $scope.tasks;
 
+                this.moveToRight = function(task) {
+                  if(task.status !== 2){
+                    task.status++;
+                  }
+                  console.log(task.status);
+
+                };
+
+                this.moveToLeft = function(task) {
+                  if(task.status !== 0){
+                    task.status--;
+                  }
+                  console.log(task.status);
+
+                };
+
+
                 this.isInTheColunm = function(task) {
                   return task.status === this.colunm;
                 };

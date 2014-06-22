@@ -1,9 +1,16 @@
-<ul>
+<ul align="center" >
     <li ng-repeat="task in tasksDisplayCtrl.tasks" ng-show="tasksDisplayCtrl.isInTheColunm(task)">
 	  <table border="1px" width="90%" align="center">
 
-	    <tr><td>US{{story.id}}-T{{task.id}}</td></tr>
-	    <tr><td>{{task.description}}</td></tr>
+	    <tr align="center">
+	    	<td> <button class="btn glyphicon glyphicon-circle-arrow-left" ng-click="tasksDisplayCtrl.moveToLeft(task)"> </button>
+            </td>
+	    	<td>US{{story.id}}-T{{task.id}}</td>
+	    	<td> <button class="btn glyphicon glyphicon-circle-arrow-right" ng-click="tasksDisplayCtrl.moveToRight(task)"> </button> </td>
+	    </tr>
+	    <tr align="center">
+	    	<td colspan="3">{{task.description}}</td>
+	    </tr>
 	  </table>
 	  <br></br>
     </li>
