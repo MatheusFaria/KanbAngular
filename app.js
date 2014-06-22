@@ -7,6 +7,15 @@
       clearStory();
     };
 
+    this.removeStory = function(story) {
+      this.stories.splice(this.stories.indexOf(story),1);
+    };
+
+    this.editStory = function() {
+      this.stories.pop(this.story);
+      clearStory();
+    };
+
     var clearStory = function() {
       ctrl.story = {};
       ctrl.story.tasks = [];
@@ -72,18 +81,17 @@
                   if(task.status !== 2){
                     task.status++;
                   }
-                  console.log(task.status);
-
                 };
 
                 this.moveToLeft = function(task) {
                   if(task.status !== 0){
                     task.status--;
                   }
-                  console.log(task.status);
-
                 };
 
+                this.removeTask = function(task) {
+                  this.tasks.splice(this.tasks.indexOf(task),1);
+                };
 
                 this.isInTheColunm = function(task) {
                   return task.status === this.colunm;
