@@ -2,79 +2,65 @@
   var app = angular.module('kanbAngular', []);
 
   app.controller("StoryController", function() {
-    this.addStory = function() {
-      this.stories.push(this.story);
-      addToHistory(createReport("Add US" + this.story.id));
-      clearStory();
-    };
-
-    this.removeStory = function(story) {
-      addToHistory(createReport("Remove US" + story.id));
-      this.stories.splice(this.stories.indexOf(story),1);
-    };
-
-    this.editStory = function(story) {
-      story.edit = true;
-    };
-
-    this.saveStory = function(story) {
-      addToHistory(createReport("Edit US" + story.id));
-      story.edit = false;
-    };
-
-    var clearStory = function() {
-      ctrl.story = {};
-      ctrl.story.tasks = [];
-      ctrl.edit = false;
-      if(ctrl.stories.length !== 0) 
-          ctrl.story.id = ctrl.stories[ctrl.stories.length - 1].id + 1;
-      else
-          ctrl.story.id = 1;
-    };
-
     this.stories = stories;
-    var ctrl = this;
-    clearStory();
-  });
-
-  app.controller("TaskController", function() {
-      this.addTask = function() {
-        addToHistory(createReport("Add Task" + this.task.id));
-        this.task.id = this.getTaskId();
-        this.current_story.tasks.push(this.task);
-
-        clearTask();
-      };
-
-      this.getTaskId = function(){
-        if(this.current_story.tasks.length !== 0)
-            return this.current_story.tasks[this.current_story.tasks.length - 1].id + 1;
-        return 1;
-      };
-
-      var clearTask = function() {
-        ctrl.task = {};
-        ctrl.current_story = stories[0];
-        ctrl.task.status = 0;
-        ctrl.task.id = ctrl.getTaskId();
-        ctrl.task.edit = false;
-      };
-
-      var ctrl = this;
-      clearTask();
   });
 
   app.directive("storyDisplay", function(){
     return {
             restrict: 'E',
-            templateUrl: "story-display.html"
+            templateUrl: "story-display.html",
+            scope: {
+                story: "=",
+            },
+            controller: ["$scope", function($scope) {
+                this.story = $scope.story;
+                this.stories = stories;
+
+                this.remove = function(story) {
+                  addToHistory(createReport("Remove US" + story.id));
+                  this.stories.splice(this.stories.indexOf(story),1);
+                };
+
+                this.edit = function(story) {
+                  story.edit = true;
+                };
+
+                this.save = function(story) {
+                  addToHistory(createReport("Edit US" + story.id));
+                  story.edit = false;
+                };
+            }],
+            controllerAs: "storyDisplayCtrl",
     };
   });
 
   app.directive("storyForm", function(){
     return {
             restrict: 'E',
-            templateUrl: "story-form.html"
+            templateUrl: "story-form.html",
+            controller: function() {
+                this.addStory = function() {
+                  this.stories.push(this.story);
+                  addToHistory(createReport("Add US" + this.story.id));
+                  clearStory();
+                };
+
+                var clearStory = function() {
+                  ctrl.story = {};
+                  ctrl.story.tasks = [];
+                  ctrl.story.edit = false;
+                  ctrl.story.tasksCount = 0;
+                  if(ctrl.stories.length !== 0) 
+                      ctrl.story.id = ctrl.stories[ctrl.stories.length - 1].id + 1;
+                  else
+                      ctrl.story.id = 1;
+                };
+
+                this.stories = stories;
+                var ctrl = this;
+                clearStory();
+            },
+            controllerAs: "storyFormCtrl",
     };
   });
 
@@ -90,9 +76,9 @@
                   if(task.status !== 2){
                     task.status++;
                     if(task.status === 1){
-                      addToHistory(createReport("Doing task " + task.id));
+                      addToHistory(createReport("Doing task US" + task.parentId + "-T" + task.id));
                     }else{
-                      addToHistory(createReport("Done task " + task.id));
+                      addToHistory(createReport("Done task US" + task.parentId + "-T" + task.id));
                     }
                   }
                 };
@@ -101,9 +87,9 @@
                   if(task.status !== 0){
                     task.status--;
                     if(task.status === 0){
-                      addToHistory(createReport("Task " + task.id + " moved from Doing to To Do"));
+                      addToHistory(createReport("Task US" + task.parentId + "-T" + task.id + " moved from Doing to To Do"));
                     }else{
-                      addToHistory(createReport("Task " + task.id + " moved from Done to Doing"));
+                      addToHistory(createReport("Task US" + task.parentId + "-T" + task.id + " moved from Done to Doing"));
                     }
                   }
                 };
@@ -113,18 +99,26 @@
                 };
 
                 this.saveTask = function(task) {
-                  addToHistory(createReport("Edit task " + task.id)); 
+                  addToHistory(createReport("Edit task US" + task.parentId + "-T" + task.id)); 
                   task.edit = false;
                 };
 
                 this.removeTask = function(task) {
-                  addToHistory(createReport("Remove task " + task.id));
+                  addToHistory(createReport("Remove task US" + task.parentId + "-T" + task.id));
                   this.tasks.splice(this.tasks.indexOf(task),1);
                 };
 
                 this.isInTheColunm = function(task) {
                   return task.status === this.colunm;
                 };
+
+                this.moveButtonEnable = function(task, type){
+                    if(type === 'left' && task.status === 0)
+                        return true;
+                    if(type === 'right' && task.status === 2)
+                        return true;
+                    return false;
+                }
             }],
             controllerAs: "tasksDisplayCtrl",
             scope: {
@@ -140,7 +134,7 @@
             templateUrl: "form-tabs.html",
               
             controller: function() {
-              this.tab = 2;
+              this.tab = 1;
               this.isSet = function(checkTab) {
                 return this.tab === checkTab;
               };
@@ -157,7 +151,59 @@
   app.directive("taskForm", function(){
     return {
             restrict: 'E',
-            templateUrl: "task-form.html"
+            templateUrl: "task-form.html",
+
+            controller: function() {
+              this.addTask = function() {
+                this.task.parentId = this.current_story.id;
+                this.task.id = this.getTaskId();
+                this.current_story.tasks.push(this.task);
+                this.current_story.tasksCount++;
+
+                addToHistory(createReport("Add Task " + this.task.id + " to US" + this.task.parentId));
+                clearTask();
+              };
+
+              this.getTaskId = function(){
+                if(!this.shouldShow())
+                    return 1;
+                return this.current_story.tasksCount + 1;
+              };
+
+              this.getCurrentStoryId = function() {
+                if(!this.shouldShow())
+                    return;
+                return this.current_story.id;
+              };
+
+              this.shouldShow = function() {
+                return stories.length > 0;
+              };
+
+              this.currentStoryRefresh = function() {
+                if(!this.shouldShow())
+                    return;
+                if(stories.indexOf(this.current_story) == -1)
+                {
+                    this.current_story = stories[0];
+                }
+              };
+
+              var clearTask = function() {
+                ctrl.task = {};
+                ctrl.current_story = {};
+                if(stories.length > 0)
+                  ctrl.current_story = stories[0];
+                ctrl.task.status = 0;
+                ctrl.task.id = ctrl.getTaskId();
+                ctrl.task.edit = false;
+              };
+
+              var ctrl = this;
+              clearTask();
+          },
+
+          controllerAs: 'taskFormCtrl',
     };
   });
 
@@ -167,6 +213,10 @@
             templateUrl: "history.html",
             controller: function(){
               this.history = history;
+
+              this.shouldShowHistory = function(){
+                return this.history.length > 0;
+              };
             },
             controllerAs: "historyCtrl",
     };
@@ -191,15 +241,18 @@
       iWant: "to do my homework",
       to: "pass in DAS",
       edit: false,
+      tasksCount: 2,
       tasks: [
       {
           id: 1,
+          parentId: 1,
           description: "First",
           status: 0,
           edit: false,
       },
       {
           id: 2,
+          parentId: 1,
           description: "Second",
           status: 1,
           edit: false,
@@ -211,9 +264,11 @@
       iWant: "to do my homework",
       to: "pass in DAS",
       edit: false,
+      tasksCount: 1,
       tasks: [
       {
           id: 1,
+          parentId: 2,
           description: "First From Second Story",
           status: 2,
           edit: false,

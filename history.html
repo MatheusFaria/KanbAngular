@@ -1,5 +1,9 @@
-<ul>
+<br />
+<ul ng-show="historyCtrl.shouldShowHistory()">
 	<li ng-repeat="report in historyCtrl.history | orderBy:'time':true | limitTo: 10 ">
 		{{report.msg}} - {{report.time | date : 'dd/MM/yyyy HH:mm'}}
 	</li>
 </ul>
+<div ng-hide="historyCtrl.shouldShowHistory()">
+    <h3>You have not done anything.</h3>
+</div>

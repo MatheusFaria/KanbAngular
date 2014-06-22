@@ -1,19 +1,19 @@
-<form name="addStoryForm" ng-submit="storyCtrl.addStory()">
+<form name="addStoryForm" ng-submit="storyFormCtrl.addStory()">
   <blockquote >
-    <strong>US {{storyCtrl.story.id}}</strong><br></br>
-    <strong>As</strong> {{storyCtrl.story.as}}<br></br>
-    <strong>I want to</strong> {{storyCtrl.story.iWant}}<br></br>
-    <strong>To</strong> {{storyCtrl.story.to}}<br></br>
+    <strong>US {{storyFormCtrl.story.id}}</strong><br></br>
+    <strong>As</strong> {{storyFormCtrl.story.as}}<br></br>
+    <strong>I want to</strong> {{storyFormCtrl.story.iWant}}<br></br>
+    <strong>To</strong> {{storyFormCtrl.story.to}}<br></br>
   </blockquote>
 
   <fieldset class="form-group">
-    <input ng-model="storyCtrl.story.as" type="text" class="form-control" placeholder="As ... " title="As" required/>
+    <input ng-model="storyFormCtrl.story.as" type="text" class="form-control" placeholder="As ... " title="As" required/>
   </fieldset>
   <fieldset class="form-group">
-    <input ng-model="storyCtrl.story.iWant" type="text" class="form-control" placeholder="I want to ... " title="IWant" required />
+    <input ng-model="storyFormCtrl.story.iWant" type="text" class="form-control" placeholder="I want to ... " title="IWant" required />
   </fieldset>
   <fieldset class="form-group">
-    <input ng-model="storyCtrl.story.to" type="text" class="form-control" placeholder="To ... " title="To" required/>
+    <input ng-model="storyFormCtrl.story.to" type="text" class="form-control" placeholder="To ... " title="To" required/>
   </fieldset>
 
   <fieldset class="form-group">

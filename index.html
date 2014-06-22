@@ -8,9 +8,9 @@
     <title>KanbAngular</title>
   </head>
 
-  <body ng-controller="StoryController as storyCtrl">
+  <body>
     <h1>KanbAngular</h1>
-    <table width="100%" border="1px" align="center">
+    <table width="100%" border="1px" align="center" ng-controller="StoryController as storyCtrl">
       <tr>
         <td width="35%" align="center">Story</td>
         <td width="21%" align="center">To Do</td>
@@ -19,7 +19,7 @@
       </tr>
       <tr height="200px" ng-repeat="story in storyCtrl.stories">
         <td>
-            <story-display></story-display>
+            <story-display story=story></story-display>
         </td>
         <td>
             <tasks-display colunm="0" tasks=story.tasks></tasks-display>

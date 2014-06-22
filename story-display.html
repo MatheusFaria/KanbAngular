@@ -1,38 +1,38 @@
 <table border="1px" width="90%" height="90%" align="center" >
   <tr>
   	<td>
-  		US {{story.id}}
+  		US {{storyDisplayCtrl.story.id}}
   	</td>
   </tr>
   <tr>
-  	<td ng-hide="story.edit">
-  		As {{story.as}}
+  	<td ng-hide="storyDisplayCtrl.story.edit">
+  		As {{storyDisplayCtrl.story.as}}
   	</td>
-  	<td ng-show="story.edit">
-  		<input ng-model="story.as" type="text" class="form-control" placeholder="As ... " title="As" />
-  	</td>
-  </tr>
-  <tr>
-  	<td ng-hide="story.edit">
-  		I want {{story.iWant}}
-  	</td>
-  	<td ng-show="story.edit">
-  		<input ng-model="story.iWant" type="text" class="form-control" placeholder="I want to ... " title="IWant"/>
+  	<td ng-show="storyDisplayCtrl.story.edit">
+  		<input ng-model="storyDisplayCtrl.story.as" type="text" class="form-control" placeholder="As ... " title="As" />
   	</td>
   </tr>
   <tr>
-  	<td ng-hide="story.edit">
-  		To {{story.to}}
+  	<td ng-hide="storyDisplayCtrl.story.edit">
+  		I want {{storyDisplayCtrl.story.iWant}}
   	</td>
-  	<td ng-show="story.edit">
-  		<input ng-model="story.to" type="text" class="form-control" placeholder="To ... " title="To" />
+  	<td ng-show="storyDisplayCtrl.story.edit">
+  		<input ng-model="storyDisplayCtrl.story.iWant" type="text" class="form-control" placeholder="I want to ... " title="IWant"/>
+  	</td>
+  </tr>
+  <tr>
+  	<td ng-hide="storyDisplayCtrl.story.edit">
+  		To {{storyDisplayCtrl.story.to}}
+  	</td>
+  	<td ng-show="storyDisplayCtrl.story.edit">
+  		<input ng-model="storyDisplayCtrl.story.to" type="text" class="form-control" placeholder="To ... " title="To" />
   	</td>
   </tr>
   <tr align="right">
 	    <td>
-	    	<button class="btn glyphicon glyphicon-pencil" ng-hide="story.edit" ng-click="storyCtrl.editStory(story)"></button>
-	    	<button class="btn glyphicon glyphicon-floppy-disk" ng-show="story.edit" ng-click="storyCtrl.saveStory(story)"></button>
-	    	<button class="btn glyphicon glyphicon-trash" ng-click="storyCtrl.removeStory(story)"></button>	
+	    	<button class="btn glyphicon glyphicon-pencil" ng-hide="storyDisplayCtrl.story.edit" ng-click="storyDisplayCtrl.edit(storyDisplayCtrl.story)"></button>
+	    	<button class="btn glyphicon glyphicon-floppy-disk" ng-show="storyDisplayCtrl.story.edit" ng-click="storyDisplayCtrl.save(storyDisplayCtrl.story)"></button>
+	    	<button class="btn glyphicon glyphicon-trash" ng-click="storyDisplayCtrl.remove(storyDisplayCtrl.story)"></button>	
 	    </td>
   </tr>
 </table>

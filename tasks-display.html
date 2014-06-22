@@ -4,13 +4,13 @@
 
 	    <tr align="center">
 	    	<td> 
-	    		<button class="btn glyphicon glyphicon-circle-arrow-left" ng-click="tasksDisplayCtrl.moveToLeft(task)"> </button>
+	    		<button class="btn glyphicon glyphicon-circle-arrow-left" ng-click="tasksDisplayCtrl.moveToLeft(task)" ng-disabled="tasksDisplayCtrl.moveButtonEnable(task, 'left')"> </button>
             </td>
 	    	<td>
-	    		US{{story.id}}-T{{task.id}}
+	    		US{{task.parentId}}-T{{task.id}}
 	    	</td>
 	    	<td> 
-	    		<button class="btn glyphicon glyphicon-circle-arrow-right" ng-click="tasksDisplayCtrl.moveToRight(task)"> </button> 
+	    		<button class="btn glyphicon glyphicon-circle-arrow-right" ng-click="tasksDisplayCtrl.moveToRight(task)" ng-disabled="tasksDisplayCtrl.moveButtonEnable(task, 'right')"> </button> 
 	    	</td>
 	    </tr>
 	    <tr align="center">
