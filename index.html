@@ -4,36 +4,37 @@
   <head>
     <script type="text/javascript" src="angularjs/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
     <title>KanbAngular</title>
   </head>
 
   <body>
-    <h1>KanbAngular</h1>
-    <table width="100%" border="1px" align="center" ng-controller="StoryController as storyCtrl">
-      <tr>
-        <td width="35%" align="center">Story</td>
-        <td width="21%" align="center">To Do</td>
-        <td width="21%" align="center">Doing</td>
-        <td width="21%" align="center">Done</td>
-      </tr>
-      <tr height="200px" ng-repeat="story in storyCtrl.stories">
-        <td>
-            <story-display story=story></story-display>
-        </td>
-        <td>
-            <tasks-display colunm="0" tasks=story.tasks></tasks-display>
-        </td>
-        <td>
-            <tasks-display colunm="1" tasks=story.tasks></tasks-display>
-        </td>
-        <td>
-            <tasks-display colunm="2" tasks=story.tasks></tasks-display>
-        </td>
-
-      </tr>
-    </table>
-    <br></br>
-    <form-tabs></form-tabs>
+    <div>
+      <h1>KanbAngular</h1>
+        <table class="table table-striped" width="100%" border="1px" align="center" ng-controller="StoryController as storyCtrl">
+        <tr>
+          <td class = "backlog" width="35%" align="center">Story</td>
+          <td class = "toDo" width="21%" align="center">To Do</td>
+          <td class = "doing" width="21%" align="center">Doing</td>
+          <td class = "done" width="21%" align="center">Done</td>
+        </tr>
+        <tr height="200px" ng-repeat="story in storyCtrl.stories">
+          <td>
+              <story-display story=story></story-display>
+          </td>
+          <td>
+              <tasks-display colunm="0" tasks=story.tasks></tasks-display>
+          </td>
+          <td>
+              <tasks-display colunm="1" tasks=story.tasks></tasks-display>
+          </td>
+          <td>
+              <tasks-display colunm="2" tasks=story.tasks></tasks-display>
+          </td>
+        </tr>
+      </table>
+      <br></br>
+      <form-tabs></form-tabs>
+    </div>
   </body>
 </html>
