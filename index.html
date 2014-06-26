@@ -1,39 +1,39 @@
-<!DOCTYPE html>
-<html ng-app="kanbAngular">
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
-  <head>
-    <script type="text/javascript" src="angularjs/angular.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-    <title>KanbAngular</title>
-  </head>
+<table border="1px" width="90%" height="90%" align="center" >
+  <tr>
+  	<td>
+  		US {{storyDisplayCtrl.story.id}}
+  	</td>
+  </tr>
+  <tr>
+  	<td ng-hide="storyDisplayCtrl.story.edit">
+  		As {{storyDisplayCtrl.story.as}}
+  	</td>
+  	<td ng-show="storyDisplayCtrl.story.edit">
+  		<input ng-model="storyDisplayCtrl.story.as" type="text" class="form-control" placeholder="As ... " title="As" />
+  	</td>
+  </tr>
+  <tr>
+  	<td ng-hide="storyDisplayCtrl.story.edit">
+  		I want {{storyDisplayCtrl.story.iWant}}
+  	</td>
+  	<td ng-show="storyDisplayCtrl.story.edit">
+  		<input ng-model="storyDisplayCtrl.story.iWant" type="text" class="form-control" placeholder="I want to ... " title="IWant"/>
+  	</td>
+  </tr>
+  <tr>
+  	<td ng-hide="storyDisplayCtrl.story.edit">
+  		To {{storyDisplayCtrl.story.to}}
+  	</td>
+  	<td ng-show="storyDisplayCtrl.story.edit">
+  		<input ng-model="storyDisplayCtrl.story.to" type="text" class="form-control" placeholder="To ... " title="To" />
+  	</td>
+  </tr>
+  <tr align="right">
+	    <td>
+	    	<button class="btn glyphicon glyphicon-pencil" ng-hide="storyDisplayCtrl.story.edit" ng-click="storyDisplayCtrl.edit(storyDisplayCtrl.story)"></button>
+	    	<button class="btn glyphicon glyphicon-floppy-disk" ng-show="storyDisplayCtrl.story.edit" ng-click="storyDisplayCtrl.save(storyDisplayCtrl.story)"></button>
+	    	<button class="btn glyphicon glyphicon-trash" ng-click="storyDisplayCtrl.remove(storyDisplayCtrl.story)"></button>	
+	    </td>
+  </tr>
+</table>
 
-  <body>
-    <h1>KanbAngular</h1>
-    <table width="100%" border="1px" align="center" ng-controller="StoryController as storyCtrl">
-      <tr>
-        <td width="35%" align="center">Story</td>
-        <td width="21%" align="center">To Do</td>
-        <td width="21%" align="center">Doing</td>
-        <td width="21%" align="center">Done</td>
-      </tr>
-      <tr height="200px" ng-repeat="story in storyCtrl.stories">
-        <td>
-            <story-display story=story></story-display>
-        </td>
-        <td>
-            <tasks-display colunm="0" tasks=story.tasks></tasks-display>
-        </td>
-        <td>
-            <tasks-display colunm="1" tasks=story.tasks></tasks-display>
-        </td>
-        <td>
-            <tasks-display colunm="2" tasks=story.tasks></tasks-display>
-        </td>
-
-      </tr>
-    </table>
-    <br></br>
-    <form-tabs></form-tabs>
-  </body>
-</html>

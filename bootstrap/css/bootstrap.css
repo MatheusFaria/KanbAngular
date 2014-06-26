@@ -11,7 +11,7 @@ html {
       -ms-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
+  margin: 50px;
 }
 article,
 aside,
@@ -240,6 +240,7 @@ th {
   .table td,
   .table th {
     background-color: #fff !important;
+
   }
   .btn > .caret,
   .dropup > .btn > .caret {
@@ -1482,6 +1483,100 @@ table th[class*="col-"] {
   display: table-cell;
   float: none;
 }
+
+.table > thead > tr > td.backlog,
+.table > tbody > tr > td.backlog,
+.table > tfoot > tr > td.backlog,
+.table > thead > tr > th.backlog,
+.table > tbody > tr > th.backlog,
+.table > tfoot > tr > th.backlog,
+.table > thead > tr.backlog > td,
+.table > tbody > tr.backlog > td,
+.table > tfoot > tr.backlog > td,
+.table > thead > tr.backlog > th,
+.table > tbody > tr.backlog > th,
+.table > tfoot > tr.backlog > th {
+  background-color: #92d18b;
+  font-family: sans-serif;
+  font-size: 20px;
+
+}
+.table-hover > tbody > tr > td.backlog:hover,
+.table-hover > tbody > tr > th.backlog:hover,
+.table-hover > tbody > tr.backlog:hover > td,
+.table-hover > tbody > tr.backlog:hover > th {
+  background-color: #92d18b;
+}
+
+.table > thead > tr > td.toDo,
+.table > tbody > tr > td.toDo,
+.table > tfoot > tr > td.toDo,
+.table > thead > tr > th.toDo,
+.table > tbody > tr > th.toDo,
+.table > tfoot > tr > th.toDo,
+.table > thead > tr.toDo > td,
+.table > tbody > tr.toDo > td,
+.table > tfoot > tr.toDo > td,
+.table > thead > tr.toDo > th,
+.table > tbody > tr.toDo > th,
+.table > tfoot > tr.toDo > th {
+  background-color: #ffa870;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.table-hover > tbody > tr > td.toDo:hover,
+.table-hover > tbody > tr > th.toDo:hover,
+.table-hover > tbody > tr.toDo:hover > td,
+.table-hover > tbody > tr.toDo:hover > th {
+  background-color: #ffa870;
+}
+
+.table > thead > tr > td.doing,
+.table > tbody > tr > td.doing,
+.table > tfoot > tr > td.doing,
+.table > thead > tr > th.doing,
+.table > tbody > tr > th.doing,
+.table > tfoot > tr > th.doing,
+.table > thead > tr.doing > td,
+.table > tbody > tr.doing > td,
+.table > tfoot > tr.doing > td,
+.table > thead > tr.doing > th,
+.table > tbody > tr.doing > th,
+.table > tfoot > tr.doing > th {
+  background-color: #8985ff;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.table-hover > tbody > tr > td.doing:hover,
+.table-hover > tbody > tr > th.doing:hover,
+.table-hover > tbody > tr.doing:hover > td,
+.table-hover > tbody > tr.doing:hover > th {
+  background-color: #8985ff;
+}
+
+.table > thead > tr > td.done,
+.table > tbody > tr > td.done,
+.table > tfoot > tr > td.done,
+.table > thead > tr > th.done,
+.table > tr > th.done,
+.table > tfoot > tr > th.done,
+.table > thead > tr.done > td,
+.table > tbody > tr.done > td,
+.table > tfoot > tr.done > td,
+.table > thead > tr.done > th,
+.table > tbody > tr.done > th,
+.table > tfoot > tr.done > th {
+  background-color: #ffed70;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.table-hover > tbody > tr > td.done:hover,
+.table-hover > tbody > tr > th.done:hover,
+.table-hover > tbody > tr.done:hover > td,
+.table-hover > tbody > tr.done:hover > th {
+  background-color: #ffed70;
+}
+
 .table > thead > tr > td.active,
 .table > tbody > tr > td.active,
 .table > tfoot > tr > td.active,
@@ -1502,6 +1597,8 @@ table th[class*="col-"] {
 .table-hover > tbody > tr.active:hover > th {
   background-color: #e8e8e8;
 }
+
+
 .table > thead > tr > td.success,
 .table > tbody > tr > td.success,
 .table > tfoot > tr > td.success,
@@ -1514,13 +1611,13 @@ table th[class*="col-"] {
 .table > thead > tr.success > th,
 .table > tbody > tr.success > th,
 .table > tfoot > tr.success > th {
-  background-color: #dff0d8;
+  background-color: #ff0000;
 }
 .table-hover > tbody > tr > td.success:hover,
 .table-hover > tbody > tr > th.success:hover,
 .table-hover > tbody > tr.success:hover > td,
 .table-hover > tbody > tr.success:hover > th {
-  background-color: #d0e9c6;
+  background-color: #ff0000;
 }
 .table > thead > tr > td.info,
 .table > tbody > tr > td.info,
