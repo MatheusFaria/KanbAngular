@@ -1,24 +1,36 @@
 <form name="addTaskForm" ng-submit="taskFormCtrl.addTask()" ng-show="taskFormCtrl.shouldShow()">
-  <blockquote >
-    <strong>US{{taskFormCtrl.getCurrentStoryId()}}-T{{taskFormCtrl.getTaskId()}}</strong><br></br>
-    <strong>Description:</strong> {{taskFormCtrl.task.description}}<br></br>
-  </blockquote>
-
-	<fieldset class="form-group" ng-controller="StoryController as storyCtrl">
+ <table>
+   <tr>
+    <td width="500px">
+     <fieldset class="form-group" ng-controller="StoryController as storyCtrl">
         {{taskFormCtrl.currentStoryRefresh()}}
-    	<select ng-model="taskFormCtrl.current_story" class="form-control" ng-options="story.id for story in storyCtrl.stories"  title="Story" required>
-    	</select>
- 	</fieldset>
+      <select ng-model="taskFormCtrl.current_story" class="form-control" ng-options="story.id for story in storyCtrl.stories"  title="Story" required>
+      </select>
+     </fieldset>
 
-  <fieldset class="form-group">
-    <textarea ng-model="taskFormCtrl.task.description" type="text" class="form-control" placeholder="Description..." title="Description" required></textarea>
-  </fieldset>
-  <fieldset class="form-group">
-    <input type="submit" class="btn btn-primary pull-right" value="Submit Task"/>
-  </fieldset>
+     <fieldset class="form-group">
+      <textarea ng-model="taskFormCtrl.task.description" type="text" class="form-control" placeholder="Description..." title="Description" required>
+      </textarea>
+     </fieldset>
 
 </form>
-<div ng-hide="taskFormCtrl.shouldShow()">
-    <br />
-    <h3>No stories avaible! Add a new Story.</h1>
-</div>
+
+    <div ng-hide="taskFormCtrl.shouldShow()">
+      <br />
+        <h3>No stories avaible! Add a new Story.</h3>
+    </div> 
+
+    </td>
+    <td width="500px">
+      <blockquote >
+        <strong>US{{taskFormCtrl.getCurrentStoryId()}}-T{{taskFormCtrl.getTaskId()}}</strong><br></br>
+        <strong>Description:</strong> {{taskFormCtrl.task.description}}<br></br>
+      </blockquote>
+
+      <fieldset class="form-group">
+        <input type="submit" class="btn btn-primary pull-right" value="Submit Task"/>
+      </fieldset>
+
+    </td>
+   </tr>
+ </table>
