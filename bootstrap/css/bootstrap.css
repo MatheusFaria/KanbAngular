@@ -1448,6 +1448,10 @@ th {
 .table-condensed > tbody > tr > td,
 .table-condensed > tfoot > tr > td {
   padding: 5px;
+  padding: 5px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border: 1px solid #00000F;
 }
 .table-bordered {
   border: 1px solid #ddd;
@@ -1467,6 +1471,9 @@ th {
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
   background-color: #EBFFEB;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border: 1px solid #00000F;
 }
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
