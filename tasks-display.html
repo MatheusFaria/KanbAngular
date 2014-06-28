@@ -3,18 +3,18 @@
 	  <table border="1px" width="90%" align="center">
 
 	    <tr align="center">
-	    	<td> 
+	    	<td bgcolor="#F8F8F8" height="30"> 
 	    		<button class="btn glyphicon glyphicon-circle-arrow-left" ng-click="tasksDisplayCtrl.moveToLeft(task)" ng-disabled="tasksDisplayCtrl.moveButtonEnable(task, 'left')"> </button>
             </td>
-	    	<td>
-	    		US{{task.parentId}}-T{{task.id}}
+	    	<td bgcolor="#FFFFEB">
+	    		<b> US{{task.parentId}}-T{{task.id}} </b>
 	    	</td>
-	    	<td> 
+	    	<td bgcolor="#F8F8F8" height="30"> 
 	    		<button class="btn glyphicon glyphicon-circle-arrow-right" ng-click="tasksDisplayCtrl.moveToRight(task)" ng-disabled="tasksDisplayCtrl.moveButtonEnable(task, 'right')"> </button> 
 	    	</td>
 	    </tr>
 	    <tr align="center">
-	    	<td colspan="3" ng-hide="task.edit">
+	    	<td colspan="3" ng-hide="task.edit" bgcolor="#FFFFFF">
 	    		{{task.description}}
 	    	</td>
 	    	<td colspan="3" ng-show="task.edit">
@@ -23,7 +23,7 @@
 	    	</td>
 	    </tr>
 	    <tr align="right">
-	    	<td colspan="3">
+	    	<td colspan="3" bgcolor="#F8F8F8" height="30">
 	    		<button class="btn glyphicon glyphicon-pencil" ng-hide="task.edit" ng-click="tasksDisplayCtrl.editTask(task)">
 	    		</button>
 	    		<button class="btn glyphicon glyphicon-floppy-disk" ng-show="task.edit" ng-click="tasksDisplayCtrl.saveTask(task)">

@@ -1,7 +1,7 @@
 <form name="addStoryForm" ng-submit="storyFormCtrl.addStory()">
- <table>
+ <table class="table" width=80%>
   <tr>
-    <td width="500px">
+    <td width=50%>
       <fieldset class="form-group">
         <input ng-model="storyFormCtrl.story.as" type="text" class="form-control" placeholder="As ... " title="As" required/>
       </fieldset>
@@ -11,9 +11,12 @@
       <fieldset class="form-group">
         <input ng-model="storyFormCtrl.story.to" type="text" class="form-control" placeholder="To ... " title="To" required/>
       </fieldset>
+      <fieldset class="form-group">
+        <input type="submit" class="btn btn-primary pull-right" value="Submit Story"/>
+      </fieldset>
     </td>
 
-    <td width="500px">
+    <td width=50%>
 
       <blockquote >
         <strong>US {{storyFormCtrl.story.id}}</strong><br></br>
@@ -22,9 +25,6 @@
         <strong>To</strong> {{storyFormCtrl.story.to}}<br></br>
       </blockquote>
 
-      <fieldset class="form-group">
-        <input type="submit" class="btn btn-primary pull-right" value="Submit Story"/>
-      </fieldset>
     </td>
    </tr>
   </table>
