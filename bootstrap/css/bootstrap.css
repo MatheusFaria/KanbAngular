@@ -289,7 +289,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #428bca;
+  color: #000;
   text-decoration: none;
 }
 a:hover,
@@ -2184,9 +2184,9 @@ fieldset[disabled] .btn-default.active {
   background-color: #333;
 }
 .btn-primary {
-  color: #fff;
-  background-color: #428bca;
-  border-color: #357ebd;
+  color: #000;
+  background-color: #8985ff;
+  border-color: #fff;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -3676,9 +3676,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-  color: #fff;
-  background-color: #428bca;
+  color: #000;
+  background-color: #92d18b;
 }
+
 .nav-stacked > li {
   float: none;
 }

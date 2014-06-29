@@ -238,22 +238,22 @@
   var stories = [{
       id: 1,
       as: "a user",
-      iWant: "to do my homework",
-      to: "pass in DAS",
+      iWant: "to register a story",
+      to: "keep track of my features",
       edit: false,
       tasksCount: 2,
       tasks: [
       {
           id: 1,
           parentId: 1,
-          description: "First",
+          description: "Create story model",
           status: 0,
           edit: false,
       },
       {
           id: 2,
           parentId: 1,
-          description: "Second",
+          description: "Create story controller",
           status: 1,
           edit: false,
       }]
@@ -261,15 +261,15 @@
     {
       id: 2,
       as: "a user",
-      iWant: "to do my homework",
-      to: "pass in DAS",
+      iWant: "to register tasks for stories",
+      to: "keep track of my activities",
       edit: false,
       tasksCount: 1,
       tasks: [
       {
           id: 1,
           parentId: 2,
-          description: "First From Second Story",
+          description: "Create task model",
           status: 2,
           edit: false,
 
