@@ -1,7 +1,7 @@
-<form name="addTaskForm" ng-submit="taskFormCtrl.addTask()" ng-show="taskFormCtrl.shouldShow()">
- <table class="table">
+ <table class="table" ng-show="taskFormCtrl.shouldShow()">
    <tr>
     <td width="500px">
+     <form name="addTaskForm" ng-submit="taskFormCtrl.addTask()">
      <fieldset class="form-group" ng-controller="StoryController as storyCtrl">
         {{taskFormCtrl.currentStoryRefresh()}}
       <select ng-model="taskFormCtrl.current_story" class="form-control" ng-options="story.id for story in storyCtrl.stories"  title="Story" required>
@@ -17,13 +17,7 @@
         <input type="submit" class="btn btn-primary pull-right" value="Submit Task"/>
       </fieldset>
 
-</form>
-
-    <div ng-hide="taskFormCtrl.shouldShow()">
-      <br />
-        <h3>No stories avaible! Add a new Story.</h3>
-    </div> 
-
+     </form>
     </td>
     <td width="500px">
       <blockquote >
@@ -34,3 +28,8 @@
     </td>
    </tr>
  </table>
+
+<div ng-hide="taskFormCtrl.shouldShow()">
+  <br />
+    <h3>No stories avaible! Add a new Story.</h3>
+</div> 
